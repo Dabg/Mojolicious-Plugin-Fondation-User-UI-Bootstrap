@@ -61,6 +61,12 @@ async function validateUserForm() {
     // NOW remove password_confirm from the data sent to the server
     delete formDataObj.password_confirm;
 
+    // In update mode, remove empty password (means "don't change password")
+    // Must be stripped BEFORE sending to avoid server-side minLength rejection
+    if (isUpdate && (!formDataObj.password || formDataObj.password.trim() === '')) {
+        delete formDataObj.password;
+    }
+
     return {
         valid: result.valid,
         errors: result.errors.map(msg => ({
@@ -120,8 +126,12 @@ async function validateUserForm() {
             });
 
             if (!response.ok) {
-                const err = await response.json();
-                throw new Error(err.message || response.statusText);
+                const body = await response.json();
+                // OpenAPI validation errors: {errors: [{message: "...", path: "..."}]}
+                const msg = body?.errors?.map(e => e.message).join('; ')
+                    || body?.message
+                    || response.statusText;
+                throw new Error(msg);
             }
 
             successBox(l("User saved successfully"));
