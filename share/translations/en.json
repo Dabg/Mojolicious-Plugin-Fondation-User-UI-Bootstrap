@@ -1,4 +1,7 @@
 {
+    "Login": "Login",
+    "Logout": "Logout",
+    "Sign in": "Sign in",
     "Form not found": "Form not found",
     "Validator not available": "Validator not available",
     "Please confirm the password": "Please confirm the password",

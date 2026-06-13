@@ -1,4 +1,7 @@
 {
+    "Login": "Connexion",
+    "Logout": "Déconnexion",
+    "Sign in": "Se connecter",
     "Form not found": "Formulaire introuvable",
     "Validator not available": "Validateur non disponible",
     "Please confirm the password": "Veuillez confirmer le mot de passe",
