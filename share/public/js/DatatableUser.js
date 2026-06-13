@@ -113,11 +113,12 @@ async function validateUserForm() {
                 return;
             }
 
-            console.log("Validated data:", validation.data);
-
             const id = validation.data.id;
             const method = id ? 'PUT' : 'POST';
             const url = id ? `/api/user/${id}` : '/api/user';
+
+            // id is in the URL path, not the request body
+            delete validation.data.id;
 
             const response = await fetch(url, {
                 method,
@@ -374,13 +375,13 @@ function deleteUser(idUser, nomUser) {
 }
 
 /**
- * Toggle a user's active status via PUT /api/user/{id}
+ * Toggle a user's active status via PATCH /api/user/{id}
  * @param {number} idUser - User ID
  * @param {number} active - 0 to deactivate, 1 to activate
  */
 function toggleActive(idUser, active) {
     $.ajax({
-        type: 'PUT',
+        type: 'PATCH',
         url: '/api/user/' + idUser,
         contentType: 'application/json',
         data: JSON.stringify({ active: active }),
