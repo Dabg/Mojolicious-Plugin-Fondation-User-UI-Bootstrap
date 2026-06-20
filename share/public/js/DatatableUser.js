@@ -172,7 +172,7 @@ function initialiseTabUser() {
         "bLengthChange": false,
         "bInfo": true,
         "ajax": {
-            "url": "/api/user",
+            "url": "/api/user?with=groups",
             "dataSrc": function (json) {
                 return json;
             },
