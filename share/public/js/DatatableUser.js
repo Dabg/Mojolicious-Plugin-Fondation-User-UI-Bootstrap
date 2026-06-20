@@ -1,6 +1,7 @@
 var tableau;
 
 $(function() {
+    if (!$('#panel-user').length) return;
     initialiseTabUser();
     $('#menuAddUser').on('click', function(event) {
         addUser();
