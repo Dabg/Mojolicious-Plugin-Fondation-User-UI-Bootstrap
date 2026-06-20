@@ -185,14 +185,14 @@ function initialiseTabUser() {
             { "data": "username" },
             { "data": "email" },
             {
-                "data": "groupes",
+                "data": "groups",
                 "render": function (data, type, row) {
                     if (!data || !data.length) return '';
                     var aff = '<ul>';
                     for (var i = 0; i < data.length; i++) {
                         aff += '<li>';
                         if (!data[i].active) { aff += '<del>'; }
-                        aff += data[i].libelle;
+                        aff += data[i].name;
                         if (!data[i].active) { aff += '</del>'; }
                         aff += '</li>';
                     }
@@ -246,7 +246,7 @@ function initialiseTabUser() {
         "initComplete": function(settings, json) {
             var hasGroups = false;
             for (var i = 0; i < json.length; i++) {
-                if (json[i].groupes) {
+                if (json[i].groups) {
                     hasGroups = true;
                     break;
                 }
