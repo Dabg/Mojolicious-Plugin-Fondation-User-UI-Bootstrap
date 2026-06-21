@@ -68,6 +68,11 @@ async function validateUserForm() {
         delete formDataObj.password;
     }
 
+    // Collect group assignments (provided by Fondation::Group::UI::Bootstrap)
+    if (typeof collectGroupAssignments === 'function') {
+        formDataObj.groups = collectGroupAssignments();
+    }
+
     return {
         valid: result.valid,
         errors: result.errors.map(msg => ({
@@ -317,6 +322,10 @@ function addUser() {
     $('#user-modal .modal-title').text(l('Add user'));
     $('#password-group, #password-confirm-group').show();
     $('#user-modal').modal('show');
+
+    if (typeof loadGroups === 'function') {
+        loadGroups(null);
+    }
 }
 
 /**
@@ -326,7 +335,7 @@ function addUser() {
 function loadUser(id) {
     $('body').css('cursor', 'progress');
 
-    $.getJSON('/api/user/' + id, function(user) {
+    $.getJSON('/api/user/' + id + '?with=groups', function(user) {
         clearModal();
         $('#user-modal .modal-title').text(l('Update user'));
         $('#password-group, #password-confirm-group').hide(); // hidden in edit mode
