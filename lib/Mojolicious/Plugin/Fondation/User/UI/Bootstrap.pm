@@ -16,7 +16,9 @@ sub fondation_meta {
 
 sub register ($self, $app, $conf) {
 
-    $app->routes->get('/users')->to(
+    $app->routes->get('/users')
+      ->requires('fondation.perm' => 'user_list')
+      ->to(
         controller => 'User',
         action     => 'list'
     );
