@@ -222,13 +222,13 @@ function initialiseTabUser() {
                 "render": function (data, type, row) {
                     if (type === 'display') {
                         if (row.active == 1) {
-                            return loadBoutonAction([
+                            return renderActions([
                                 { 'perm': 'user_update', 'title': l('Edit user'), 'classe': "fa fa-edit intModifie" },
                                 { 'perm': 'user_delete', 'title': l('Delete user'), 'classe': "fa fa-trash intSupprime" },
                                 { 'perm': 'user_update', 'title': l('Make inactive'), 'classe': "fa fa-times intInactive" },
                             ]);
                         } else {
-                            return loadBoutonAction([
+                            return renderActions([
                                 { 'perm': 'user_update', 'title': l('Edit user'), 'classe': "fa fa-edit intModifie" },
                                 { 'perm': 'user_delete', 'title': l('Delete user'), 'classe': "fa fa-trash intSupprime" },
                                 { 'perm': 'user_update', 'title': l('Make active'), 'classe': "fa fa-check intActive" }
