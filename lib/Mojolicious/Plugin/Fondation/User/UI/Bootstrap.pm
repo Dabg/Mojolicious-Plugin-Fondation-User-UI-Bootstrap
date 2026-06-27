@@ -20,7 +20,7 @@ sub register ($self, $app, $conf) {
       ->requires('fondation.perm' => 'user_list')
       ->to(
         controller => 'User',
-        action     => 'list'
+        action     => 'index'
     );
 
     return $self;
