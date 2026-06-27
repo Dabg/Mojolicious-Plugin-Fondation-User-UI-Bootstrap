@@ -223,15 +223,15 @@ function initialiseTabUser() {
                     if (type === 'display') {
                         if (row.active == 1) {
                             return loadBoutonAction([
-                                { 'droit': 'administration', 'title': l('Edit user'), 'classe': "fa fa-edit intModifie" },
-                                { 'droit': 'administration', 'title': l('Delete user'), 'classe': "fa fa-trash intSupprime" },
-                                { 'droit': 'administration', 'title': l('Make inactive'), 'classe': "fa fa-times intInactive" },
+                                { 'perm': 'user_update', 'title': l('Edit user'), 'classe': "fa fa-edit intModifie" },
+                                { 'perm': 'user_delete', 'title': l('Delete user'), 'classe': "fa fa-trash intSupprime" },
+                                { 'perm': 'user_update', 'title': l('Make inactive'), 'classe': "fa fa-times intInactive" },
                             ]);
                         } else {
                             return loadBoutonAction([
-                                { 'droit': 'administration', 'title': l('Edit user'), 'classe': "fa fa-edit intModifie" },
-                                { 'droit': 'administration', 'title': l('Delete user'), 'classe': "fa fa-trash intSupprime" },
-                                { 'droit': 'administration', 'title': l('Make active'), 'classe': "fa fa-check intActive" }
+                                { 'perm': 'user_update', 'title': l('Edit user'), 'classe': "fa fa-edit intModifie" },
+                                { 'perm': 'user_delete', 'title': l('Delete user'), 'classe': "fa fa-trash intSupprime" },
+                                { 'perm': 'user_update', 'title': l('Make active'), 'classe': "fa fa-check intActive" }
                             ]);
                         }
                     }
