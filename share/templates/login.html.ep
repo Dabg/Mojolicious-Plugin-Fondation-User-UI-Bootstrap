@@ -9,6 +9,7 @@
         <h2 class="card-title text-center mb-4"><%= l 'Login' %></h2>
 
         <form method="post" action="/login">
+          <%= csrf_field %>
 
           <div class="mb-3">
             <label for="username" class="form-label"><%= l 'Username' %></label>
