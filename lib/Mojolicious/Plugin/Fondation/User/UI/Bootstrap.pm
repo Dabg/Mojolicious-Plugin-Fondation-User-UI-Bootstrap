@@ -3,7 +3,6 @@ use Mojo::Base 'Mojolicious::Plugin', -signatures;
 
 # ABSTRACT: Web UI for Fondation::User — templates, assets, and i18n
 
-our $VERSION = '0.01';
 
 sub fondation_meta {
     return {
